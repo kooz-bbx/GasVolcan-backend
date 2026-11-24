@@ -74,6 +74,16 @@ Opcional: `JWT_SECRET` (mínimo 32 caracteres) cambia la clave con la que se fir
 - Flujo: `pendiente → asignado → en-camino → entregado` (cancelado desde pendiente, asignado o en-camino).
 - Errores en JSON: `{ "estado": 409, "mensaje": "...", "errores": { campo: mensaje } }`.
 
+## Pruebas automáticas
+
+```bash
+mvn test
+```
+
+Usan H2 en memoria (no necesitan MySQL): `OrdenServiceTest` y `UsuarioServiceTest` (JUnit 5 + Mockito, reglas de negocio),
+`EstadoOrdenTest`, `OrdenPersistenciaTest` (`@DataJpaTest`) y `ApiSeguridadTest` (JWT y roles con MockMvc).
+La guía para la presentación está en `docs/GUIA_PRESENTACION.md`.
+
 ## Estructura
 ```
 src/main/java/cl/gasvolcan/api/
